@@ -46,5 +46,9 @@ void setup() {
 }
 
 void loop() {
-    // Add your application code here.
+    display.clearDisplay();
+    display.setCursor(40, 28);
+    display.println("Hello IOT ");
+    display.display();
+    delay(1000);
 }
