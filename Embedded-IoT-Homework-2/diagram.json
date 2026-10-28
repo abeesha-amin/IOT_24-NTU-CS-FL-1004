@@ -3,113 +3,29 @@
   "author": "Abeesha Amin",
   "editor": "wokwi",
   "parts": [
-    {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": {}
-    },
-    {
-      "type": "wokwi-led",
-      "id": "led1",
-      "top": -90,
-      "left": 250,
-      "attrs": {
-        "color": "red"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "led2",
-      "top": -90,
-      "left": 330,
-      "attrs": {
-        "color": "green"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r1",
-      "top": -20,
-      "left": 245,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r2",
-      "top": -20,
-      "left": 325,
-      "rotate": 90,
-      "attrs": {
-        "value": "220"
-      }
-    }
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -90, "left": 250, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": -90, "left": 330, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": -20, "left": 245, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": -20, "left": 325, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "board-ssd1306", "id": "oled1", "top": 120, "left": 280, "attrs": { "i2cAddress": "0x3C" } }
   ],
   "connections": [
-    [
-      "esp:TX",
-      "$serialMonitor:RX",
-      "",
-      []
-    ],
-    [
-      "esp:RX",
-      "$serialMonitor:TX",
-      "",
-      []
-    ],
-    [
-      "esp:18",
-      "r1:1",
-      "green",
-      [
-        "h0"
-      ]
-    ],
-    [
-      "r1:2",
-      "led1:A",
-      "green",
-      [
-        "h0"
-      ]
-    ],
-    [
-      "led1:C",
-      "esp:GND.2",
-      "black",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "esp:19",
-      "r2:1",
-      "blue",
-      [
-        "h0"
-      ]
-    ],
-    [
-      "r2:2",
-      "led2:A",
-      "blue",
-      [
-        "h0"
-      ]
-    ],
-    [
-      "led2:C",
-      "esp:GND.2",
-      "black",
-      [
-        "v0"
-      ]
-    ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "esp:18", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "led1:A", "green", [ "h0" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v0" ] ],
+
+    [ "esp:19", "r2:1", "blue", [ "h0" ] ],
+    [ "r2:2", "led2:A", "blue", [ "h0" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v0" ] ],
+
+    [ "esp:21", "oled1:SDA", "orange", [ "h0" ] ],
+    [ "esp:22", "oled1:SCL", "purple", [ "h0" ] ],
+    [ "esp:3V3", "oled1:VCC", "red", [ "h0" ] ],
+    [ "esp:GND.3", "oled1:GND", "black", [ "h0" ] ]
   ],
   "dependencies": {}
 }
